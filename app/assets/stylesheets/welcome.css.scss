@@ -2,11 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+html {
+  overflow: hidden;
+  width: 110%;
+  height: 640px;
+}
+
 body {
   background-color: black;
   font-family: Arial;
   width: 95%;
   color: #333333;
+  height: 640px;
+  overflow: hidden;
 }
 
 #viewport {
@@ -26,7 +34,7 @@ body {
 }
 
 #logo {
-  width: 128px;
+  width: 135px;
   vertical-align: middle;
   cursor: url(drag-cursor.png), url(/assets/drag-cursor.png), default;
 
@@ -123,6 +131,17 @@ body {
   top: -75px;
   color: white;
   font-size: 24px;
+}
+
+.fun_cards_text {
+  font-size: 14px;
+  background: #e7a93a;
+  padding: 20px;
+  width: 355px;
+  text-align: center;
+  color: black;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #fun_cards a img {
@@ -257,153 +276,173 @@ body {
 
 // fun about us section
 
-.slideOutTip {
-/* The main wrapping div of the slideout tips */
-  position: absolute;
-  padding: 3px;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  font-size: 13px;
-  color: white;
-  overflow: hidden;
-  height: 22px;
-}
-
-.slideOutTip:hover {
-/* Applying a CSS3 outer glow on hover */
-  -moz-box-shadow: 0 0 1px #999;
-  -webkit-box-shadow: 0 0 1px #999;
-  box-shadow: 0 0 1px #999;
-}
-
-/* The holder for the title and the icon: */
-.tipVisible {
-  cursor: pointer;
-  height: 22px;
-}
-
-.tipTitle {
-  float: left;
-  font-family: 'Myriad Pro', Arial, Helvetica, sans-serif;
-  font-size: 15px;
-  font-weight: bold;
-  white-space: nowrap;
-  line-height: 22px;
-  padding-right: 5px;
-  margin-top: 0px;
-}
-
-.tipIcon {
-  width: 20px;
-  height: 20px;
-  float: left;
-  background-color: #61b035;
-  border: 1px solid #70c244;
-  margin-right: 8px;
-
-/* CSS3 Rounded corners */
-
-  -moz-border-radius: 1px;
-  -webkit-border-radius: 1px;
-  border-radius: 1px;
-}
-
-/* Seven color themes */
-.violet .tipIcon {
-  background-color: #ee82ee;
-  border: 1px solid #ee6b86;
-}
-
-.indigo .tipIcon {
-  background-color: #8c00ec;
-  border: 1px solid #4b0082;
-}
-
-.green .tipIcon {
-  background-color: #61b035;
-  border: 1px solid #70c244;
-}
-
-.blue .tipIcon {
-  background-color: #1078C7;
-  border: 1px solid #1e82cd;
-}
-
-.red .tipIcon {
-  background-color: #CD3A12;
-  border: 1px solid #da421a;
-}
-
-.yellow .tipIcon {
-  background-color: #ffff00;
-  border: 1px solid #b8860b;
-}
-
-.orange .tipIcon {
-  background-color: #ffa500;
-  border: 1px solid #ff8c00;
-}
-
-.plusIcon {
-/* The plus icon */
-  width: 13px;
-  height: 13px;
-  background: url('/assets/temp/plus.gif') no-repeat center center;
-  margin: 4px;
-
-/* Defining a CSS3 animation. Currently only works in Chrome and Safari */
-  -webkit-transition: -webkit-transform 0.2s linear;
-  -moz-transition: -moz-transform 0.2s linear;
-  transition: transform 0.2s linear;
-}
-
-.slideOutTip.isOpened {
-  z-index: 10000;
-}
-
-.slideOutTip.isOpened .plusIcon {
-/* Applying a CSS3 rotation  to the opened slideouts*/
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-/* Special rules for the left and top - opening versions */
-
-.openLeft .tipIcon {
-/* Floating the title and the icon to the right */
-  margin: 0 0 0 8px;
-  float: right;
-}
-
-.openLeft .tipTitle {
-  float: right;
-  padding: 0 0 0 5px;
-}
-
-.openLeft .slideOutContent {
-  margin-top: 22px;
-}
-
-.openLeft.openTop .slideOutContent {
-  margin-top: 0;
-}
-
-.slideOutContent {
-/* Hiding the div with the slide out content: */
-  display: none;
-  padding: 10px;
-  font-size: 11px;
-}
-
-/* Hiding the original paragraphs if they have not been replaced (JS disabled): */
-
-.main > p {
-  display: none;
-}
-
-.main {
+.wrapper {
   position: relative;
-  margin-top: -130px;
+  margin-top: -200px;
+  margin-left: 200px;
+  height: 500px;
+}
+
+.wrapper div {
+  position: absolute;
+}
+
+.settings, nav {
+  position: fixed;
+  z-index: 9999999;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.5);
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.settings {
+  right: 0;
+  padding: 10px 20px;
+  border-radius: 10px 0 0 0;
+}
+
+.settings a {
+  border: none;
+}
+
+.sp-canvas {
+  //display: none;
+}
+
+.demo {
+  overflow: hidden;
+  font-size: 30px;
+  text-align: left;
+  font-weight: bold;
+  margin-left: 170px;
+}
+
+.arrow {
+  font-size: 50px;
+  animation: point-down 0.5s alternate infinite;
+  color: black;
+  margin-left: 40px;
+}
+
+.arrow_text {
+  font-size: 12px;
+  color: black;
+  display: inline-block;
+  float: right;
+}
+
+.us_box {
+  background: #ffffff;
+  position: relative;
+  left: -80px;
+  border-radius: 10px;
+  padding: 10px 10px 0px 10px;
+  display: inline-block;
+  font-size: 13px;
+  border: solid black 5px;
+  text-decoration: none;
+  color: #8b0000;
+}
+
+.us_box img {
+  margin-top: -70px;
+  width: 150px;
+}
+
+.big {
+  display: block;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1.3em;
+  margin-bottom: 10px;
+  text-shadow: 4px 4px 0 #dddddd;
+  color: black;
+  margin-top: -5px;
+}
+
+.smally {
+  margin-top: 40px;
+  width: 200px;
+}
+
+.description {
+  top: 740px;
+  left: -200px;
+  width: 440px;
+}
+
+.description1 {
+  top: 480px;
+  left: 100px;
+  width: 440px;
+}
+
+.description2 {
+  top: 1188px;
+  left: -650px;
+  width: 590px;
+}
+
+.description3 {
+  top: 1545px;
+  left: 291px;
+  width: 680px;
+}
+
+.description4 {
+  top: 1539px;
+  left: 1417px;
+  width: 440px;
+}
+
+.description5 {
+  top: 713px;
+  left: 2265px;
+  width: 440px;
+  transform: rotate(90deg) translateY(2.5em);
+}
+
+.description6 {
+  top: -250px;
+  left: 2265px;
+  width: 440px;
+  transform: rotate(90deg) translateY(2.5em);
+}
+
+.description7 {
+  top: -985px;
+  left: 1784px;
+  width: 440px;
+  transform: rotate(90deg) translateY(2.5em);
+}
+
+.description8 {
+  top: -912px;
+  left: 1149px;
+  width: 440px;
+  transform: rotate(90deg) translateY(2.5em);
+}
+
+.description9 {
+  top: -624px;
+  left: 453px;
+  width: 440px;
+  transform: rotate(45deg) translateY(2.5em);
+}
+
+@keyframes point-down {
+	from {
+		top: 0;
+	}
+	to {
+		top: 5px;
+	}
+}
+
+@keyframes highlight {
+	to {
+		background: lightblue;
+	}
 }

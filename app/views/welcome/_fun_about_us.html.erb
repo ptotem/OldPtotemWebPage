@@ -1,113 +1,5 @@
-<%= content_for :onload do %>
-    $('.main p').replaceWith(function () {
 
-    /* The style, class and title attributes of the p are copied to the slideout: */
-
-    return '\
-    <div class="slideOutTip ' + $(this).attr('class') + '" style="' + $(this).attr('style') + '">\
-      \
-      <div class="tipVisible">\<div class="tipIcon"><div class="plusIcon"></div></div>\
-        <p class="tipTitle">' + $(this).attr('title') + '</p>\
-      </div>\
-      \
-      <div class="slideOutContent">\
-        <p>' + $(this).html() + '</p>\
-      </div>\
-    </div>';
-    });
-
-    $('.tipVisible').bind('click', function () {
-    var tip = $(this).parent();
-
-    /* If a open/close animation is in progress, exit the function */
-    if (tip.is(':animated'))
-    return false;
-
-    if (tip.find('.slideOutContent').css('display') == 'none') {
-    tip.trigger('slideOut');
-    }
-    else tip.trigger('slideIn');
-
-    });
-
-    $('.slideOutTip').bind('slideOut',
-    function () {
-
-    var tip = $(this);
-    var slideOut = tip.find('.slideOutContent');
-
-    /* Closing all currently open slideouts: */
-    $('.slideOutTip.isOpened').trigger('slideIn');
-
-    /* Executed only the first time the slideout is clicked: */
-    if (!tip.data('dataIsSet')) {
-    tip.data('origWidth', tip.width())
-    .data('origHeight', tip.height())
-    .data('dataIsSet', true);
-
-    if (tip.hasClass('openTop')) {
-    /*
-    If this slideout opens to the top, instead of the bottom,
-    calculate the distance to the bottom and fix the slideout to it.
-    */
-
-    tip.css({
-    bottom:tip.parent().height() - (tip.position().top + tip.outerHeight()),
-    top:'auto'
-    });
-
-    /* Fixing the title to the bottom of the slideout, so it is not slid to the top on open: */
-    tip.find('.tipVisible').css({position:'absolute', bottom:3});
-
-    /* Moving the content above the title, so it can slide open to the top: */
-    tip.find('.slideOutContent').remove().prependTo(tip);
-    }
-
-    if (tip.hasClass('openLeft')) {
-    /*
-    If this slideout opens to the left, instead of right, fix it to the
-    right so the left edge can expand without moving the entire div:
-    */
-    tip.css({
-    right:Math.abs(tip.parent().outerWidth() - (tip.position().left + tip.outerWidth())),
-    left:'auto'
-    });
-
-    tip.find('.tipVisible').css({position:'absolute', right:3});
-    }
-    }
-
-    /* Resize the slideout to fit the content, which is then faded into view: */
-
-    tip.addClass('isOpened').animate({
-    width:Math.max(slideOut.outerWidth(), tip.data('origWidth')),
-    height:slideOut.outerHeight() + tip.data('origHeight')
-    }, function () {
-    slideOut.fadeIn();
-    });
-
-    }).bind('slideIn', function () {
-    var tip = $(this);
-
-    /* Hide the content and restore the original size of the slideout: */
-
-    tip.find('.slideOutContent').fadeOut('fast', function () {
-    tip.animate({
-    width:tip.data('origWidth'),
-    height:tip.data('origHeight')
-    }, function () {
-    tip.removeClass('isOpened');
-    });
-    });
-
-    });
-
-
-<% end %>
 <div class="fun">
-  <div id="fun_catchphrase">
-    <h3>who is ptotem?</h3>
-  </div>
 
   <ul id="fun_menu">
     <li><%= link_to "home", "/" %></li>
@@ -115,35 +7,153 @@
     <li>about us</li>
   </ul>
 
-  <div class="main">
-    <% @employees.each do |employee| %>
-        <p title="<%= employee.name %>" class="<%= employee.color %>" style="top:<%= employee.posy %>px;left:<%= employee.posx %>px;">
-          <%= image_tag employee.avatar.url(:thumb) %><%= employee.description %>
-        </p>
-    <% end %>
-  </div>
+  <div class="wrapper">
+    <div class="demo us_box">
+      <span class="big">who is ptotem? <span class="arrow">&darr;<span class="arrow_text">Press &darr; to scroll</span></span></span>
 
+    </div>
+    <div class="description1 us_box">
+      <div class="big">Arijit Lahiri</div>
+      <div class="smally">The pointy haired boss. Except when he shaves his head.</div>
+      <img src="assets/about_us/arijit_lahiri.jpg" style="float:right;">
+      <img src="assets/linkedin.png" style="height:48px;margin-right: 15px;float:right;">
+    </div>
+
+    <div class="description2 us_box">
+      <div class="big">Kamalika Bhattacharya</div>
+      <div class="smally">The pointy haired boss. Except when he shaves his head.</div>
+      <img src="assets/about_us/arijit_lahiri.jpg" style="float:right;">
+      <img src="assets/linkedin.png" style="height:48px;margin-right: 15px;float:right;">
+    </div>
+
+    <div class="description3 us_box">
+      <div class="big">Arunkumar Balasubramanian</div>
+      <div class="smally" style="margin-top: 55px;width:640px;">The pointy haired boss. Except when he shaves his head.</div>
+      <img src="assets/about_us/arijit_lahiri.jpg" style="float:right;">
+      <img src="assets/linkedin.png" style="height:48px;margin-right: 15px;float:right;">
+    </div>
+
+
+    <div class="description4 us_box">
+      <span class="big">Rushabh Hathi</span>
+      Desc about Rushabh Hathi
+      <img src="assets/about_us/rushabh_hathi.jpg">
+    </div>
+
+    <div class="description5 us_box">
+      <span class="big">Indraneel More</span>
+      Desc about Indraneel More
+      <img src="assets/about_us/smiley_face.png">
+    </div>
+
+    <div class="description6 us_box">
+      <span class="big">Sunny Singh</span>
+      Desc about Sunny Singh
+      <img src="assets/about_us/sunny_singh.jpg">
+    </div>
+
+    <div class="description7 us_box">
+      <span class="big">Nilesh Panchal</span>
+      Desc about Nilesh Panchal
+      <img src="assets/about_us/Nilesh_Panchal.jpg">
+    </div>
+
+    <div class="description8 us_box">
+      <span class="big">Rakesh Rengaraj</span>
+      Desc about Rakesh Rengaraj
+      <img src="assets/about_us/Spiderman-476x360.jpg">
+    </div>
+
+    <div class="description9 us_box">
+      <span class="big">Surbhi Sawant</span>
+      Desc about Surbhi Sawant
+      <img src="assets/about_us/surbhi_sawant.jpg">
+    </div>
+  </div>
 </div>
 
-<%= content_for :show_bips do %>
-    show_bips();
-<% end %>
+<script type="text/javascript">
 
-<%= content_for :scripts do %>
-    function show_bips() {
+    $(document).ready(init);
 
-    $('.slideOutTip').each(function () {
+    function init() {
+        /* ========== DRAWING THE PATH AND INITIATING THE PLUGIN ============= */
 
-    /*
-    Implicitly defining the width of the slideouts according to the width of its title,
-    because IE fails to calculate it on its own.
-    */
+        $.fn.scrollPath("getPath")
+            // Move to 'start' element
+                .moveTo(400, 50, {name:"start"})
+            // Line to 'description' element
+                .lineTo(400, 800, {name:"description"})
+            // Arc down and line to 'syntax'
+                .arc(200, 1200, 400, -Math.PI / 2, Math.PI / 2, true)
+                .lineTo(600, 1600, {
+                    callback:function () {
+                        highlight($(".settings"));
+                    },
+                    name:"syntax"
+                })
+            // Continue line to 'scrollbar'
+                .lineTo(1750, 1600, {
+                    callback:function () {
+                        highlight($(".sp-scroll-handle"));
+                    },
+                    name:"scrollbar"
+                })
+            // Arc up while rotating
+                .arc(1800, 1000, 600, Math.PI / 2, 0, true, {rotate:Math.PI / 2 })
+            // Line to 'rotations'
+                .lineTo(2400, 750, {
+                    name:"rotations"
+                })
+            // Rotate in place
+                .rotate(3 * Math.PI / 2, {
+                    name:"rotations-rotated"
+                })
+            // Continue upwards to 'source'
+                .lineTo(2400, -700, {
+                    name:"source"
+                })
+            // Small arc downwards
+                .arc(2250, -700, 150, 0, -Math.PI / 2, true)
 
-    $(this).width(40 + $(this).find('.tipTitle').width());
-    });
+            //Line to 'follow'
+                .lineTo(1350, -850, {
+                    name:"follow"
+                })
+            // Arc and rotate back to the beginning.
+                .arc(1300, 50, 900, -Math.PI / 2, -Math.PI, true, {rotate:Math.PI * 2, name:"end"});
 
-    /* Listening for the click event: */
+        // We're done with the path, let's initate the plugin on our wrapper element
+        $(".wrapper").scrollPath({drawPath:true, wrapAround:true, scrollBar:false});
 
+        /* ===================================================================== */
 
+        $(".settings .show-path").click(
+                function (e) {
+                    e.preventDefault();
+                }).toggle(function () {
+                    $(this).text("Hide Path");
+                }, function () {
+                    $(this).text("Show Path");
+                });
     }
-<% end %>
+
+
+    function highlight(element) {
+        if (!element.hasClass("highlight")) {
+            element.addClass("highlight");
+            setTimeout(function () {
+                element.removeClass("highlight");
+            }, 2000);
+        }
+    }
+    function ordinal(num) {
+        return num + (
+                (num % 10 == 1 && num % 100 != 11) ? 'st' :
+                        (num % 10 == 2 && num % 100 != 12) ? 'nd' :
+                                (num % 10 == 3 && num % 100 != 13) ? 'rd' : 'th'
+                );
+    }
+
+
+</script>
