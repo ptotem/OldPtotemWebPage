@@ -1,0 +1,29 @@
+<%= content_for :masonry do %>
+
+    var $container = $('#fun_product_list');
+    $container.imagesLoaded(function(){
+      $container.masonry({
+        itemSelector : '.box'
+      });
+    });
+
+<% end %>
+<div class="fun">
+  <ul id="fun_menu">
+    <li><%= link_to "home", "/" %></li>
+    <li>Products</li>
+    <li><%= link_to "about us", "/about_us" %></li>
+  </ul>
+
+  <div class="fun_header">
+    Games
+  </div>
+  <div id="fun_product_list" class="clearfix">
+    <% @game_products.each do |product| %>
+        <div class="box photo col1">
+          <%= link_to image_tag(product.avatar.url(:medium)), product %>
+        </div>
+    <% end %>
+  </div>
+
+</div>

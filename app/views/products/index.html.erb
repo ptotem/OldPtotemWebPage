@@ -1,0 +1,29 @@
+<%= content_for :css_adjustments do %>
+
+    $('#serious_menu').css('margin-left', '780px');
+
+    $('#fun_catchphrase').css('font-size', '18px');
+    $('#fun_cards').css('left', '500px');
+    $('#fun_blurb').css('left', '540px');
+
+    $('.writeup').css('left', '100px');
+<% end %>
+
+<%= content_for :onload do %>
+    setTimeout(function() {
+    if (dragger_state==true){
+    slide_to_serious();
+    toggle_dragger();
+    }
+    }, 2000);
+<% end %>
+<%= content_for :serious do %>
+    <%= render :partial => 'serious_index' %>
+<% end %>
+
+<%= content_for :fun do %>
+    <%= render :partial => 'fun_index' %>
+<% end %>
+<%= content_for :splash do %>
+    <%= render :partial => 'splash_index' %>
+<% end %>

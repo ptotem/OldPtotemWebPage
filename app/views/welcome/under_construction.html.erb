@@ -1,0 +1,27 @@
+<%= content_for :onload do %>
+    $('#logo').attr('src', '/assets/logo.png');
+    $('#logo').css('cursor', 'pointer');
+    $('#knob').draggable('disable');
+    $('#knob').css('opacity', "1");
+    $('#coming_soon').imageparallax();
+<% end %>
+
+<%= content_for :splash do %>
+    <div id="under_construction">
+
+      <table>
+        <tr>
+          <td>
+            <%= image_tag "uc.png", :id => "coming_soon" %>
+          </td>
+          <td style="padding-left: 80px;">
+            <span style="font-size: 24px;">We are putting up stuff one by one. Wait for this to come up. Trust us, the wait would be worth it...</span>
+            <br>
+            <%= link_to "Back to Home", "/" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+<% end %>

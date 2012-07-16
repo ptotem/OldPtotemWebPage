@@ -1,0 +1,409 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: black;
+  font-family: Arial;
+  width: 95%;
+  color: #333333;
+}
+
+#viewport {
+  position: relative;
+  overflow: hidden;
+}
+
+#appframe {
+  width: 960px;
+  z-index: 0;
+}
+
+#knob {
+  position: absolute;
+  top: 10%;
+  z-index: 99;
+}
+
+#logo {
+  width: 128px;
+  vertical-align: middle;
+  cursor: url(drag-cursor.png), url(/assets/drag-cursor.png), default;
+
+}
+
+#content {
+  position: relative;
+  width: 100%;
+}
+
+#splash {
+  margin: 270px 0px 0px 275px;
+  display: none;
+}
+
+#under_construction {
+  margin: 170px 0px 0px -100px;
+}
+
+#fun_section, #serious_section {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.fun, .serious {
+  display: none;
+}
+
+/* The Fun Section CSS*/
+
+#fun_menu {
+  position: relative;
+  left: -80px;
+  top: 200px;
+  width: 300px;
+}
+
+#fun_menu li {
+  list-style: none;
+  margin-bottom: 5px;
+  padding: 5px;
+
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#a6000000', endColorstr = '#00000000', GradientType = 1); /* IE6-9 */
+
+  color: gray;
+  font-family: 'Comic', cursive;
+  font-size: 20px;
+
+}
+
+#fun_menu li a {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Metamorphous', cursive;
+  text-decoration: none;
+}
+
+#fun_menu li a:hover {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Metamorphous', cursive;
+  text-decoration: none;
+}
+
+#fun_catchphrase {
+  position: relative;
+  left: 80px;
+  top: 100px;
+  color: white;
+  font-size: 24px;
+}
+
+#fun_blurb {
+  position: relative;
+  left: 690px;
+  top: -120px;
+  color: black;
+  font-size: 16px;
+  width: 300px;
+}
+
+#fun_cards {
+  position: relative;
+  left: 650px;
+  top: -75px;
+  color: white;
+  font-size: 24px;
+}
+
+#fun_cards a img {
+  width: 128px;
+}
+
+.writeup {
+  position: absolute;
+  top: 250px;
+  left: 200px;
+  display: none;
+}
+
+.writeup_text {
+  position: relative;
+  top: -250px;
+  left: 50px;
+}
+
+.writeup table, .writeup h3 {
+  width: 320px;
+}
+
+.ptclose {
+  float: right;
+  font-size: 36px;
+  margin-top: -10px;
+  cursor: pointer;
+}
+
+.writeup_text img {
+  width: 100px;
+  margin-right: 10px;
+}
+
+/* The serious section CSS*/
+
+#serious_menu {
+  position: relative;
+  margin-left: 940px;
+  top: 200px;
+  //width: 300px;
+}
+
+#serious_menu li {
+  list-style: none;
+  margin-bottom: 5px;
+  padding: 5px;
+
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.65)), color-stop(100%, rgba(0, 0, 0, 0))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* IE10+ */
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#a6000000', endColorstr = '#00000000', GradientType = 1); /* IE6-9 */
+
+  color: gray;
+  font-size: 20px;
+  width: 100px;
+}
+
+#serious_menu li a {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: 'Arial';
+  text-decoration: none;
+}
+
+#serious_menu li a:hover {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Arial', cursive;
+  text-decoration: none;
+}
+
+#serious_catchphrase {
+  position: relative;
+  left: 380px;
+  top: -100px;
+  color: white;
+  font-size: 36px;
+  width: 350px;
+}
+
+#serious_blurb {
+  margin-top: 100px;
+}
+
+#serious_blurb_back {
+  background: #ffb855;
+  opacity: 0.7;
+  position: relative;
+  margin-left: -20px;
+  top: -100px;
+  width: 350px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+#serious_blurb_text {
+  position: relative;
+  margin-left: 10px;
+  margin-top: -360px;
+  width: 300px;
+  font-family: 'Arial';
+  font-size: 16px;
+
+}
+
+// About Us Page
+
+#about_us_serious_container {
+  margin-top: -130px;
+}
+
+.whatis, .whyis, .whereis, .howis {
+  float: left;
+  width: 250px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin: 5px;
+  color: black;
+}
+
+.whois {
+  float: left;
+
+}
+
+// fun about us section
+
+.slideOutTip {
+/* The main wrapping div of the slideout tips */
+  position: absolute;
+  padding: 3px;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  font-size: 13px;
+  color: white;
+  overflow: hidden;
+  height: 22px;
+}
+
+.slideOutTip:hover {
+/* Applying a CSS3 outer glow on hover */
+  -moz-box-shadow: 0 0 1px #999;
+  -webkit-box-shadow: 0 0 1px #999;
+  box-shadow: 0 0 1px #999;
+}
+
+/* The holder for the title and the icon: */
+.tipVisible {
+  cursor: pointer;
+  height: 22px;
+}
+
+.tipTitle {
+  float: left;
+  font-family: 'Myriad Pro', Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  white-space: nowrap;
+  line-height: 22px;
+  padding-right: 5px;
+  margin-top: 0px;
+}
+
+.tipIcon {
+  width: 20px;
+  height: 20px;
+  float: left;
+  background-color: #61b035;
+  border: 1px solid #70c244;
+  margin-right: 8px;
+
+/* CSS3 Rounded corners */
+
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+}
+
+/* Seven color themes */
+.violet .tipIcon {
+  background-color: #ee82ee;
+  border: 1px solid #ee6b86;
+}
+
+.indigo .tipIcon {
+  background-color: #8c00ec;
+  border: 1px solid #4b0082;
+}
+
+.green .tipIcon {
+  background-color: #61b035;
+  border: 1px solid #70c244;
+}
+
+.blue .tipIcon {
+  background-color: #1078C7;
+  border: 1px solid #1e82cd;
+}
+
+.red .tipIcon {
+  background-color: #CD3A12;
+  border: 1px solid #da421a;
+}
+
+.yellow .tipIcon {
+  background-color: #ffff00;
+  border: 1px solid #b8860b;
+}
+
+.orange .tipIcon {
+  background-color: #ffa500;
+  border: 1px solid #ff8c00;
+}
+
+.plusIcon {
+/* The plus icon */
+  width: 13px;
+  height: 13px;
+  background: url('/assets/temp/plus.gif') no-repeat center center;
+  margin: 4px;
+
+/* Defining a CSS3 animation. Currently only works in Chrome and Safari */
+  -webkit-transition: -webkit-transform 0.2s linear;
+  -moz-transition: -moz-transform 0.2s linear;
+  transition: transform 0.2s linear;
+}
+
+.slideOutTip.isOpened {
+  z-index: 10000;
+}
+
+.slideOutTip.isOpened .plusIcon {
+/* Applying a CSS3 rotation  to the opened slideouts*/
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Special rules for the left and top - opening versions */
+
+.openLeft .tipIcon {
+/* Floating the title and the icon to the right */
+  margin: 0 0 0 8px;
+  float: right;
+}
+
+.openLeft .tipTitle {
+  float: right;
+  padding: 0 0 0 5px;
+}
+
+.openLeft .slideOutContent {
+  margin-top: 22px;
+}
+
+.openLeft.openTop .slideOutContent {
+  margin-top: 0;
+}
+
+.slideOutContent {
+/* Hiding the div with the slide out content: */
+  display: none;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* Hiding the original paragraphs if they have not been replaced (JS disabled): */
+
+.main > p {
+  display: none;
+}
+
+.main {
+  position: relative;
+  margin-top: -130px;
+}

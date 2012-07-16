@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Story:</b>
+  <%= @snippet.story_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @snippet.description %>
+</p>
+
+<p>
+  <b>Opta:</b>
+  <%= @snippet.opta %>
+</p>
+
+<p>
+  <b>Optb:</b>
+  <%= @snippet.optb %>
+</p>
+
+
+<%= link_to 'Edit', edit_snippet_path(@snippet) %> |
+<%= link_to 'Back', snippets_path %>

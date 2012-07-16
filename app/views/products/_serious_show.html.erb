@@ -1,0 +1,43 @@
+<%= content_for :onload do %>
+
+<% end %>
+
+<div class="serious show_page">
+  <ul id="serious_menu">
+    <li><%= link_to "Home", "/" %></li>
+    <li><%= link_to "Products", "/products" %></li>
+    <li><%= link_to "About Us", "/about_us" %></li>
+  </ul>
+
+  <div class="serious_header show_page">
+  </div>
+  <div class="serious_content show_page" id="serious_stuff">
+    <div id="main_pic" class="box">
+      <h1><%= @product.name %></h1>
+    </div>
+    <div id="brief" class="box">
+      <%= raw @product.brief %>
+    </div>
+    <div id="salient_points" class="box">
+      <h1>Salient Points</h1>
+      <%= raw "<ul><li>"+@product.salient_points.split(".").join("</li><li>")+'</ul>' if @product.salient_points %>
+    </div>
+
+    <div id="purchase_info" class="box">
+      <h2>Pricing Structures</h2>
+      <%= raw @product.purchase_info %>
+    </div>
+    <div id="product_banner" class="box col1">
+      <%= image_tag @product.avatar.url(:medium) %>
+    </div>
+    <div id="screencaster" class="box col1">
+      <%= image_tag "screencast.png", :onclick => "$('.serious').hide();slide_to_fun();" %>
+    </div>
+    <div id="side_pic" class="box">
+      If you find this interesting, please
+      <a data-backdrop="static" data-toggle="modal" href="#contact_us">Contact Us</a>
+    </div>
+  </div>
+
+</div>
+

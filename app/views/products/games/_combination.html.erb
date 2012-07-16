@@ -1,0 +1,162 @@
+<%= content_for :onload do %>
+    $('.rotatescroll').tinycircleslider({
+    'interval':true,
+    intervaltime: 6000,
+    snaptodots:true,
+    radius:50,
+    callback:function (element, index) {
+    switch ($(this).attr('id')) {
+    case "first_scroller":
+    $('#first_index').val(index);
+    break;
+    case "second_scroller":
+    $('#second_index').val(index);
+    break;
+    case "third_scroller":
+    $('#third_index').val(index);
+    break;
+    }
+    if ($('#first_index').val() ==<%= @story.snippets.first.path_options[0].next_id %> && $('#second_index').val() ==<%= @story.snippets.first.path_options[1].next_id %> && $('#third_index').val() ==<%= @story.snippets.first.path_options[2].next_id %>) {
+    $('#ta_options').html('<h1 style="margin-top:0px">success! <a href="<%= @product.demo_path %>">demo unlocked.</a></h1>');
+    $('.demo_button').attr('src', '/assets/portal-open.png');
+    $('#demo_block').parent().attr('title', 'demo unlocked!!');
+    $('#demo_block').wrap('<a href="<%= @product.demo_path %>"/>');
+    }
+    }
+    });
+
+<% end %>
+
+<h1 class="story_header"><%= @story.name.downcase %></h1>
+<div id="ta_image">
+  <%= image_tag @story.avatar.url(:medium) %>
+  <div id="ta_writeup" style="display: none;">
+    <h2 style="margin: 0;">Resolve the Runes</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Rune</th>
+        <th>Key</th>
+      </tr>
+      <tr>
+        <td>Archer</td>
+        <td><%= image_tag "runes/archer.png" %></td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Assassin</td>
+        <td><%= image_tag "runes/assassin.png" %></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>Fighter</td>
+        <td><%= image_tag "runes/fighter.png" %></td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>Magician</td>
+        <td><%= image_tag "runes/magician.png" %></td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>Rogue</td>
+        <td><%= image_tag "runes/rogue.png" %></td>
+        <td>4</td>
+      </tr>
+      <tr>
+        <td>Seer</td>
+        <td><%= image_tag "runes/seer.png" %></td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <td>Sorcerer</td>
+        <td><%= image_tag "runes/sorcerer.png" %></td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>Spy</td>
+        <td><%= image_tag "runes/spy.png" %></td>
+        <td>7</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div id="ta_container">
+  <%= image_tag "parchment.png", :class => "background" %>
+  <div id="scroller_launcher">
+    <div id="ta_launcher_link" class="launcher">
+      <%= link_to image_tag("start_the_quest.png"), "#", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image img:first').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
+    </div>
+    <br>
+
+    <div id="ta_launcher_content" class="launcher">
+      <%= raw @story.snippets.first.description %>
+    </div>
+  </div>
+
+  <div id="scroller_test">
+    <div id="ta_scenario" class="theft">
+      <div class="rotatescroll" id="first_scroller">
+        <div class="scroller_viewport">
+          <ul class="overview">
+            <li><a rel="group" href="#"><img src="/assets/runes/archer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/assassin.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/fighter.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/seer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/sorcerer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/magician.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/spy.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/rogue.png"></a></li>
+          </ul>
+        </div>
+        <div class="dot"></div>
+        <div class="overlay"></div>
+        <div class="thumb"></div>
+      </div>
+      <div class="rotatescroll" id="second_scroller">
+        <div class="scroller_viewport">
+          <ul class="overview">
+            <li><a rel="group" href="#"><img src="/assets/runes/archer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/assassin.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/fighter.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/seer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/sorcerer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/magician.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/spy.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/rogue.png"></a></li>
+          </ul>
+        </div>
+        <div class="dot"></div>
+        <div class="overlay"></div>
+        <div class="thumb"></div>
+      </div>
+      <div class="rotatescroll" id="third_scroller">
+        <div class="scroller_viewport">
+          <ul class="overview">
+            <li><a rel="group" href="#"><img src="/assets/runes/archer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/assassin.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/fighter.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/seer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/sorcerer.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/magician.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/spy.png"></a></li>
+            <li><a rel="group" href="#"><img src="/assets/runes/rogue.png"></a></li>
+          </ul>
+        </div>
+        <div class="dot"></div>
+        <div class="overlay"></div>
+        <div class="thumb"></div>
+      </div>
+    </div>
+    <br>
+
+    <div id="ta_options">
+      <%= raw @story.snippets[1].description %>
+      <%= hidden_field_tag :first_index, '0' %>
+      <%= hidden_field_tag :second_index, '0' %>
+      <%= hidden_field_tag :third_index, '0' %>
+    </div>
+  </div>
+
+</div>

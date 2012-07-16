@@ -1,0 +1,91 @@
+<div class="serious">
+  <ul id="serious_menu">
+    <li><%= link_to "Home", "/" %></li>
+    <li><%= link_to "Products", "/products" %></li>
+    <li>About Us</li>
+  </ul>
+  <div class="serious_header">
+    <%= image_tag "logo_with_name.png", :style => "vertical-align:middle" %>
+    <div style="font-size: 12px;margin-left: 100px;">learning projects</div>
+  </div>
+  <div id="about_us_serious_container">
+    <div class="whatis explanation_box">
+      <h2>What is Ptotem?</h2>
+      Ptotem is a privately held learning initiatives firm, started in 2009 by senior industry professionals
+      from the fields of Business, Instructional Design, HR Management and Psychology.
+      <br>
+      <br>
+      Ptotem's simulation division specializes in designing and administering online simulations and workshops
+      for
+      training, learning and assessment. Today, we cater to many top-ranked business schools and corporate
+      houses in
+      the country for their learning needs.
+      <br>
+      <br>
+      Ptotem's game division creates board games with a focus to educate on concepts and culture. Look for us
+      at
+      Hamleys, Landmark, Crossword or your neighborhood toy store.
+      <br>
+      <br>
+      Ptotem's instructional design division creates programs using psychometrics and competitive workshops to
+      map a
+      participant's strengths, interests and styles. The output is used to guide development, career and
+      job-role
+      related discussions.
+    </div>
+    <div class="whereis explanation_box" style="width: 200px">
+      <h2>Where is Ptotem?</h2>
+
+      <p style="font-size: 14px;">
+        Ptotem Learning Projects LLP,<br/>
+        A332, Antop Hill Warehousing,<br/>
+        Barkat Ali Road,Wadala (East), <br/>
+        Mumbai,India - 400035<br/>
+        <a href="http://maps.google.co.in/maps/ms?msa=0&amp;msid=203265541477027233533.0004aab8247df4293252d&amp;ie=UTF8&amp;vpsrc=6&amp;ll=19.019401,72.866521&amp;spn=0.0142,0.018239&amp;z=15&amp;source=embed">
+          (Find us on the map)
+        </a>
+      </p>
+
+      <p style="font-size: 14px;">
+
+        +91 84 5204 4099 <br/>
+
+        <a href="mailto:info@ptotem.com?subject=Ref. your website...">info@ptotem.com</a>
+      </p>
+
+      <div>
+        <a href="http://twitter.com/#!/ptotemlearning"><img src="/assets/twitter_logo.png" style="width:50px;height: 50px;"/></a>
+        <a href="http://www.linkedin.com/company/ptotem-learning-projects"><img src="/assets/linkedin-logo.png" style="width:50px;height: 50px;"/></a>
+        <a href="https://www.facebook.com/pages/Ptotem-Learning/125071964187317"><img src="/assets/facebook-logo.png" style="width:50px;height: 50px; "/></a>
+      </div>
+    </div>
+    <div class="whyis explanation_box" style="width: 210px">
+      <h2>Why is Ptotem?</h2>
+      Peeping over our cubicle walls, for a long time, we watched.
+      <br>
+      <br>
+      Watched the world losing its colors. Heard the music fade away into silence. And we became comfortable in our muted sepia existence.
+      <br>
+      <br>
+      Till yesterday, we found our paintbrushes. And the theme music started...
+
+    </div>
+    <div class="howis explanation_box" style="height:165px; width: 470px">
+      <h2>How is Ptotem?</h2>
+      <% Chatter.all.each do |c| %>
+          <%= image_tag c.avatar.url(:thumb) %>
+          <%= c.name %>
+          <br>
+          <br>
+
+          <h3><%= c.client %></h3>
+
+          <% unless c.linker.blank? %>
+              <%= link_to "...more", c.linker, :style => "float:right;", :target => "_blank" %>
+          <% end %>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>

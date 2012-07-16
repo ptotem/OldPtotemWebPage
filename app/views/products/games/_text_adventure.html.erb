@@ -1,0 +1,88 @@
+<%= content_for :onload do %>
+<% end %>
+
+<h1 class="story_header"><%= @story.name.downcase %></h1>
+<div id="ta_image">
+  <%= image_tag @story.avatar.url(:medium) %>
+  <div id="ta_writeup" style="display: none;">
+    <div id="ta_writeup_scroller">
+      <div class="customScrollBox">
+        <div id="scrollMe" class="container">
+          <div class="content">
+            <p></p>
+          </div>
+        </div>
+        <div class="dragger_container">
+          <div id="dragMe" class="dragger"></div>
+        </div>
+        <a class="scrollUpBtn" href="#"></a> <a class="scrollDownBtn" href="#"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ta_container">
+  <%= image_tag "parchment.png", :class => "background" %>
+  <div id="scroller_launcher">
+    <div id="ta_launcher_link" class="launcher">
+      <%= link_to image_tag("start_the_quest.png"), "#", :class => "option", "data-step" => "#{@story.snippets[0].path_options.first.id}", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image img:first').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
+    </div>
+    <br>
+
+    <div id="ta_launcher_content" class="launcher">
+      <%= raw @story.snippets[0].description %>
+    </div>
+  </div>
+  <div id="scroller_test">
+    <div id="ta_scenario" class="talking">
+    </div>
+
+    <div id="ta_options" class="talking">
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="/assets/exclusions/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.dragger_container').show();
+
+        $('.option').live('click', function () {
+            var opt = $(this);
+            $.ajax({
+                url:'<%= story_step_path %>',
+                data:{step:opt.data("step")},
+                type:"post",
+                dataType:"JSON",
+                success:function (data) {
+                    if (data.last_choice != "Start") {
+                        $('#ta_writeup p').append(data.last_choice + '<br><br>');
+                    }
+                    else {
+                        $('#ta_writeup p').append("<h2><%= raw @story.name %></h2>");
+                    }
+                    $('#ta_writeup p').append(data.scenario + '<br><br>');
+                    $('#ta_options').html(data.this_choice);
+                    $("#ta_writeup_scroller").mCustomScrollbar("vertical", 400, "easeOutCirc", 1.05, "auto", "yes", "yes", 10);
+                    if (data.complete == true) {
+                        if (data.status == true) {
+                            $('#ta_options').html('<h1 style="margin-top:0px">success! <a href="<%= @product.demo_path %>">demo unlocked.</a></h1>');
+                            $('.demo_button').attr('src', '/assets/portal-open.png');
+                            $('#demo_block').parent().attr('title', 'demo unlocked!!');
+                            $('#demo_block').wrap('<a href="<%= @product.demo_path %>"/>');
+                        }
+                        else {
+                            $('#ta_options').html('<h1 style="margin-top:0px">bad luck! <a href="<%= product_path(@product) %>">try again.</a></h1>');
+                        }
+                    }
+                    var s = $('#scrollMe').height()-325;
+                    var d = $('#dragMe').height()+80;
+                    $('#scrollMe').animate({top:-s+"px"});
+                    $('#dragMe').css('top',d+"px");
+                }
+            });
+        });
+        $("#ta_writeup_scroller").mCustomScrollbar("vertical", 200, "easeOutCirc", 1.05, "auto", "yes", "yes", 10);
+    })
+</script>

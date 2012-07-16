@@ -1,0 +1,90 @@
+<%= content_for :scripts do %>
+    function show_writeup(card) {
+    $('.writeup').hide();
+    $("#" + card).show();
+    }
+<% end %>
+<%= content_for :onload do %>
+    $('.ptclose').click(function () {
+    $('.writeup').hide();
+    });
+<% end %>
+
+<div class="fun">
+
+  <div id="fun_catchphrase">
+    you are a gamer...you just don't know it yet.
+  </div>
+
+  <ul id="fun_menu">
+    <li>home</li>
+    <li><%= link_to "products", "/products" %></li>
+    <li><%= link_to "about us", "/about_us" %></li>
+  </ul>
+
+  <div id="fun_blurb">
+    <%= image_tag "parchment.png", :style=>"margin-left: -50px;margin-top:-20px;" %>
+    <h3 style="margin-top:-240px;">
+      once upon a time, in a land far far away, there lived an evil demon. many heroes had quested unsuccessfully to
+      defeat him, and the king had all but given up hope.
+      <br>
+      <br>
+      till from beyond the horizon, came forth three heroes unlike
+      any seen before...
+    </h3>
+  </div>
+
+  <div id="fun_cards">
+    <%= link_to image_tag("wizard.png"), "#", :id => "wizard", :onclick => "show_writeup('wizard_writeup');" %>
+    <%= link_to image_tag("alchemist.png"), "#", :id => "alchemist", :onclick => "show_writeup('alchemist_writeup');" %>
+    <%= link_to image_tag("thief.png"), "#", :id => "thief", :onclick => "show_writeup('thief_writeup');" %>
+  </div>
+
+  <div id="thief_writeup" class="writeup">
+    <%= image_tag("parchment.png") %>
+    <div class="writeup_text" id="thief_text">
+      <h3><span class="ptclose">&times;</span>the thief</h3>
+      <table>
+        <tr>
+          <td><%= image_tag("thief.png") %></td>
+          <td>
+            an expert at disabling traps and lock-picking, she can navigate the team through the many dangers that
+            protect the demon as he hides deep in his castle.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="wizard_writeup" class="writeup">
+    <%= image_tag("parchment.png") %>
+    <div class="writeup_text" id="wizard_text">
+      <h3><span class="ptclose">&times;</span>the wizard</h3>
+      <table>
+        <tr>
+          <td><%= image_tag("wizard.png") %></td>
+          <td>
+            the leader of the trio, the wizard is a master of tongues and logic, whether it is talking his way out of
+            trouble or engineering the perfect spell to rain destruction.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="alchemist_writeup" class="writeup">
+    <%= image_tag("parchment.png") %>
+    <div class="writeup_text" id="alchemist_text">
+      <h3><span class="ptclose">&times;</span>the alchemist</h3>
+      <table>
+        <tr>
+          <td><%= image_tag("alchemist.png") %></td>
+          <td>
+            having mastered the power of the elements, the alchemist transmutes the world itself for defending the group
+            while raining destruction on their enemies.
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</div>

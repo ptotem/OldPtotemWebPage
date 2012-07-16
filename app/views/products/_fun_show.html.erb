@@ -1,0 +1,37 @@
+<%= content_for :masonry do %>
+
+<% end %>
+<div class="fun">
+  <ul id="fun_menu">
+    <li><%= link_to "home", "/" %></li>
+    <li><%= link_to "products", "/products" %></li>
+    <li><%= link_to "about us", "/about_us" %></li>
+    <li style="height:190px" title="complete the quest to unlock the demo">
+      <span id="demo_block"><%= @product.name.downcase %> demo <br/><%= image_tag "portal-closed.png", :class => "demo_button" %></span>
+    </li>
+  </ul>
+  <div id="game_frame">
+    <% case @context %>
+    <% when "wizard" %>
+        <%= render :partial => "/products/games/text_adventure" %>
+    <% when "alchemist" %>
+        <%= render :partial => "/products/games/alchemy" %>
+    <% when "thief" %>
+        <%= render :partial => "/products/games/combination" %>
+    <% end %>
+
+    <div id="context_frame">
+      <% case @context %>
+      <% when "wizard" %>
+          <%= image_tag "wizard.png" %>
+      <% when "alchemist" %>
+          <%= image_tag "alchemist.png" %>
+      <% when "thief" %>
+          <%= image_tag "thief.png" %>
+      <% end %>
+    </div>
+  </div>
+
+  <span class="demo_label">complete the quest successfully to unlock the demo</span>
+
+</div>

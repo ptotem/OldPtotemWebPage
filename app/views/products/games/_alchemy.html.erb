@@ -1,0 +1,112 @@
+<%= content_for :onload do %>
+
+<% end %>
+
+<h1 class="story_header"><%= @story.name.downcase %></h1>
+<div id="ta_image">
+  <%= image_tag @story.avatar.url(:medium) %>
+  <div id="ta_writeup" style="display: none;">
+    <div><%= raw @story.snippets[1].description %></div>
+  </div>
+</div>
+
+<div id="ta_container">
+  <%= image_tag "parchment.png", :class => "background" %>
+  <div id="scroller_launcher">
+    <div id="ta_launcher_link" class="launcher">
+      <%= link_to image_tag("start_the_quest.png"), "#", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image img').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
+    </div>
+    <br>
+    <div id="ta_launcher_content" class="launcher">
+      <%= raw @story.snippets[0].description %>
+    </div>
+  </div>
+
+  <div id="scroller_test">
+    <div id="ta_scenario" class="alchemy">
+      <div id="alchemy_container">
+        <div id="alchemy_center"><%= image_tag "mixer.png" %></div>
+      </div>
+    </div>
+
+    <div id="ta_options" class="alchemy">
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    var alchemy_element_array = [];
+    var checker = "00000000";
+    alchemy_element_array = ["fire", "water", "earth", "air", "energy", "magic", "technology", "nature"];
+
+    // replace the 'n'th character of 's' with 't'
+    function replaceAt(s, n, t) {
+        if (window.console) {
+            console.log(s.substring(0, n), t, s.substring(n + 1));
+        }
+        return s.substring(0, n) + t + s.substring(n + 1);
+    }
+
+
+    function createFields() {
+        $('.field').remove();
+        var container = $('#alchemy_container');
+
+        for (var i = 0; i < 8; i++) {
+            $('<div/>', {
+                'class':'field',
+                'html':'<a href="#" title=' + alchemy_element_array[i] + '><img src="/assets/elements/' + alchemy_element_array[i] + '-off.png" class="alchemy_elements" id="' + i + '"/></a>'
+            }).appendTo(container);
+        }
+    }
+
+    function distributeFields() {
+        var radius = 100;
+        var fields = $('.field'), container = $('#alchemy_container'),
+                width = container.width(), height = container.height(),
+                angle = 0, step = (2 * Math.PI) / fields.length;
+        fields.each(function () {
+            var x = Math.round(width / 2 + radius * Math.cos(angle) - $(this).width() / 2);
+            var y = Math.round(height / 2 + radius * Math.sin(angle) - $(this).height() / 2);
+            $(this).css({
+                left:x + 'px',
+                top:y + 'px'
+            });
+            angle += step;
+        });
+    }
+
+    $(function () {
+
+        createFields();
+        distributeFields();
+
+        $('.alchemy_elements').live('click', function () {
+            if ($(this).hasClass("img-swap")) {
+                this.src = this.src.replace("-on", "-off");
+                checker = replaceAt(checker, parseInt($(this).attr("id")), "0");
+            } else {
+                this.src = this.src.replace("-off", "-on");
+                checker = replaceAt(checker, parseInt($(this).attr("id")), "1");
+            }
+            if (window.console) {
+                console.log(checker);
+            }
+            $(this).toggleClass("img-swap");
+        });
+        $('#alchemy_center').click(function () {
+            if (checker ==<%= @story.snippets.first.path_options.first.next_id %>) {
+                $('#ta_options').hide();
+                $("#alchemy_center img").hide();
+                $('#alchemy_center').html('<h2 style="text-align:center;">success!<br/><a href="<%= @product.demo_path %>">demo unlocked.</a></h2>');
+                $('.demo_button').attr('src', '/assets/portal-open.png');
+                $('#demo_block').parent().attr('title', 'demo unlocked!!');
+                $('#demo_block').wrap('<a href="<%= @product.demo_path %>" />');
+            }
+            else {
+                $('#ta_options').html('<h1 style="margin-top:0px;text-align:right">That <br/>did <br/>not<br/> work!');
+            }
+        });
+    })
+</script>

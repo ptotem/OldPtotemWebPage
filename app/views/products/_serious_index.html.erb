@@ -1,0 +1,33 @@
+<%= content_for :onload do %>
+
+
+<% end %>
+
+<div class="serious">
+  <ul id="serious_menu">
+    <li><%= link_to "Home", "/" %></li>
+    <li>Products</li>
+    <li><%= link_to "About Us", "/about_us" %></li>
+  </ul>
+
+  <div class="serious_header">
+    Simulations and Applications
+  </div>
+  <div id="serious_product_list">
+    <% @sim_products.each do |product| %>
+        <a href="<%= product_path(product) %>">
+          <div class="explanation_box">
+            <%= image_tag product.avatar.url(:thumb) %>
+            <h3><%= product.name %></h3>
+            <br>
+            <%= product.description %>
+            <br>
+            <br>
+            <%#= link_to "...more", product %>
+          </div>
+        </a>
+    <% end %>
+
+  </div>
+
+</div>
