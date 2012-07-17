@@ -15,6 +15,9 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @product = Product.find(params[:id])
+    @sim_products=Product.where('game=?', false).all
+    @game_products=Product.where('game=?', true).all
+
     random_story=rand(Story.all.count)
     @story=Story.all[random_story]
     #@story=Story.all[0]

@@ -485,31 +485,17 @@
   color: white;
 }
 
-#main_pic {
-  width: 190px;
-  height: 190px;
-  margin: 5px;
-  color: white;
-  text-align: center;
-  vertical-align: middle;
-  border: 5px solid black;
-  background: #111111;
-
-}
-
-#main_pic h1 {
-  margin-top: 60px;
-  font-size: 28px;
-}
-
 #brief {
-  background: #f6b170;
-  border: 5px solid #d89b62;
-  width: 590px;
-  height: 170px;
+  //background: #f6b170;
+  //border: 5px solid #d89b62;
+  position: absolute;
+  width: 420px;
+  height: 420px;
   top: 10px;
   margin: 5px;
-  padding: 10px;
+  margin-left: 80px;
+  margin-top: -10px;
+  padding: 50px;
   color: #333333;
 }
 
@@ -536,14 +522,15 @@
 }
 
 #side_pic {
-  width: 420px;
+  position: absolute;
+  right:0px;
+  bottom:0px;
+  width: 100px;
   height: 19px;
-  margin: 5px;
   padding: 10px;
-  margin-top: -61px;
   text-align: center;
-  border: 6px solid #781d14;
-  color: white;
+  border-radius: 20px;
+  color: black;
   font-style: bold;
 }
 
@@ -551,26 +538,32 @@
   font-size: 18px;
   text-decoration: none;
   color: white;
-  background: #be2a1c;
-  width: 420px;
+  background: #000;
+  width: 100px;
   height: 18px;
   margin: 5px;
   padding: 10px;
   text-align: center;
-  border: 4px solid #781d14;
+  border: 4px solid #000;
 }
 
 #product_banner {
+  position: absolute;
   width: 220px;
   height: 220px;
-  top: 10px;
+  left: 620px;
   margin: 5px;
+  margin-top: 0px;
+  margin-left: -80px;
   border: solid 5px black;
+  border-radius: 10px;
 }
 
 #product_banner img {
   height: 220px;
   width: 220px;
+  border-radius: 10px;
+
 }
 
 #purchase_info {
@@ -590,10 +583,14 @@
 }
 
 #screencaster {
+  position: absolute;
+  top:230px;
+  left:550px;
   text-align: center;
   font-size: 24px;
   color: black;
   font-style: bold;
-  cursor:pointer;
+  cursor: pointer;
+  width: 300px;
 }
 

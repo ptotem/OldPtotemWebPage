@@ -12,20 +12,21 @@
   <div class="serious_header show_page">
   </div>
   <div class="serious_content show_page" id="serious_stuff">
-    <div id="main_pic" class="box">
-      <h1><%= @product.name %></h1>
-    </div>
-    <div id="brief" class="box">
-      <%= raw @product.brief %>
-    </div>
-    <div id="salient_points" class="box">
-      <h1>Salient Points</h1>
-      <%= raw "<ul><li>"+@product.salient_points.split(".").join("</li><li>")+'</ul>' if @product.salient_points %>
-    </div>
 
-    <div id="purchase_info" class="box">
-      <h2>Pricing Structures</h2>
-      <%= raw @product.purchase_info %>
+    <div id="brief" class="box explanation_box">
+      <h1><%= @product.name %></h1>
+      <%= raw @product.brief %>
+      <br>
+      <br>
+
+      <h3>Salient Points</h3>
+      <%= raw "<ul><li>"+@product.salient_points.split(".").join("</li><li>")+'</ul>' if @product.salient_points %>
+
+      <div id="side_pic" class="box">
+        <a data-backdrop="static" data-toggle="modal" href="#contact_us" style="position:absolute;bottom:0;right:0">Contact
+          Us</a>
+      </div>
+
     </div>
     <div id="product_banner" class="box col1">
       <%= image_tag @product.avatar.url(:medium) %>
@@ -33,9 +34,18 @@
     <div id="screencaster" class="box col1">
       <%= image_tag "screencast.png", :onclick => "$('.serious').hide();slide_to_fun();" %>
     </div>
-    <div id="side_pic" class="box">
-      If you find this interesting, please
-      <a data-backdrop="static" data-toggle="modal" href="#contact_us">Contact Us</a>
+    <div id="next_arrow">
+      <% if @product==Product.where('game=?', false).last %>
+          <% @next=Product.where('game=?', true).first %>
+      <% elsif @product==Product.where('game=?', true).last %>
+          <% @next=Product.where('game=?', false).first %>
+      <% elsif @game_products.index(@product)%>
+          <% @next=@game_products[@game_products.index(@product)+1] %>
+      <% else %>
+          <% @next=@sim_products[@sim_products.index(@product)+1] %>
+      <% end %>
+
+      <%= link_to image_tag("next_arrow.png", :style => 'position:absolute; width:200px;left:550px;top:440px'), @next %>
     </div>
   </div>
 
