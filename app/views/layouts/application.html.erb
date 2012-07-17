@@ -743,6 +743,9 @@
             $('#splash').css('margin-left', '215px');
         <%= yield :css_adjustments %>
         }
+        else {
+            $('#appframe').width(960);
+        }
         main_section = $('#appframe').width();
         panel = (winWd - main_section) / 2;
         center_position = winWd / 2;
@@ -897,26 +900,26 @@
       <%= form_for(@contact) do |f| %>
           <div class="modal-header">
             <h2 style="width:100%">Contact Us
-            <a href="#" data-dismiss="modal" style="text-decoration: none;float:right;margin-right: 20px;">x</a>
+              <a href="#" data-dismiss="modal" style="text-decoration: none;float:right;margin-right: 20px;">x</a>
             </h2>
           </div>
-          <div class="modal-body" >
+          <div class="modal-body">
             Do let us know how we can contact you...
             <br/>
             <br/>
             <%= image_tag "contact_us.png", :style => "float:left;width:150px;margin-right:20px;" %>
             <%= f.label :email %>
             <br>
-            <%= f.text_field :email, :style=>"width:250px;" %>
+            <%= f.text_field :email, :style => "width:250px;" %>
             <br/>
             <br/>
             <%= f.label :phone %>
             <br>
-            <%= f.text_field :phone, :style=>"width:250px;" %>
+            <%= f.text_field :phone, :style => "width:250px;" %>
             <%= f.hidden_field :product_id, :value => @product.id %>
           </div>
           <div class="modal-footer">
-            <%= f.submit "Send", :class=>"btn btn-large btn-info" %>
+            <%= f.submit "Send", :class => "btn btn-large btn-info" %>
             <a href="#" class="btn btn-warning btn-large" data-dismiss="modal" style="text-decoration: none;">Cancel</a>
           </div>
       <% end %>
