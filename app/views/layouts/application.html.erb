@@ -2,10 +2,69 @@
 <html>
 <head>
 <title>Ptotem</title>
+<link href='http://fonts.googleapis.com/css?family=Convergence' rel='stylesheet' type='text/css'>
 <%= stylesheet_link_tag "application" %>
 <%= javascript_include_tag "application" %>
 <%= csrf_meta_tags %>
-<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1">
+<%= yield(:head) %>
+</head>
+<body>
+<%= js extend_gritter :position => :bottom_right %>
+<%= js add_gritter(flash[:notice], :image => :success, :title => "Notice", :sticky => false, :time => 2000) %>
+<%= js add_gritter(flash[:alert], :image => :warning, :title => "Alert!", :sticky => false, :time => 2000) %>
+<div>
+  <%= image_tag "col.jpg", :id => "lowerimage" %>
+  <div id="viewport">
+    <%= image_tag "bnw.jpg", :id => "upperimage" %>
+  </div>
+  <div id="appframe" style="background: black;">
+    <div id="knob">
+      <%= image_tag "dragger.png", :id => "logo" %>
+    </div>
+    <div id="content">
+      <div id="serious_section">
+        <%= yield :serious %>
+      </div>
+      <div id="fun_section">
+        <%= yield :fun %>
+      </div>
+      <div id="splash">
+        <%= yield :splash %>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @product %>
+    <div class="modal hide fade" id="contact_us">
+      <% @contact=Contact.new %>
+      <%= form_for(@contact) do |f| %>
+          <div class="modal-header">
+            <h2 style="width:100%">Contact Us
+              <a href="#" data-dismiss="modal" style="text-decoration: none;float:right;margin-right: 20px;">x</a>
+            </h2>
+          </div>
+          <div class="modal-body">
+            Do let us know how we can contact you...
+            <br/>
+            <br/>
+            <%= image_tag "contact_us.png", :style => "float:left;width:150px;margin-right:20px;" %>
+            <%= f.label :email %>
+            <br>
+            <%= f.text_field :email, :style => "width:250px;" %>
+            <br/>
+            <br/>
+            <%= f.label :phone %>
+            <br>
+            <%= f.text_field :phone, :style => "width:250px;" %>
+            <%= f.hidden_field :product_id, :value => @product.id %>
+          </div>
+          <div class="modal-footer">
+            <%= f.submit "Send", :class => "btn btn-large btn-info" %>
+            <a href="#" class="btn btn-warning btn-large" data-dismiss="modal" style="text-decoration: none;">Cancel</a>
+          </div>
+      <% end %>
+    </div>
+<% end %>
 
 <script type="text/javascript">
     /*
@@ -693,6 +752,10 @@
 
     <%= yield(:scripts) %>
 
+    function isTouchDevice() {
+        return (typeof(window.ontouchstart) != 'undefined') ? true : false;
+    }
+
     function slide_to_serious() {
         $('#viewport').animate({
             width:main_section + panel
@@ -739,8 +802,20 @@
         winHt = window.innerHeight ? (window.innerHeight - 20) : ($(window).height() - 20);
         winWd = window.innerWidth ? (window.innerWidth - 20) : ($(window).width() - 20);
         if (winWd < 1100) {
-            $('#appframe').width(840);
-            $('#splash').css('margin-left', '215px');
+            if (!isTouchDevice()) {
+                $('#appframe').width(840);
+                $('#splash').css('margin-left', '215px');
+            }
+            else {
+                if (winWd < 800) {
+                    $('#appframe').width(480);
+                    $('#splash').css('margin-left', '215px');
+                }
+                else {
+                    $('#appframe').width(840);
+                    $('#splash').css('margin-left', '215px');
+                }
+            }
         <%= yield :css_adjustments %>
         }
         else {
@@ -772,20 +847,21 @@
 
     }
 
-    function isTouchDevice() {
-        return (typeof(window.ontouchstart) != 'undefined') ? true : false;
-    }
-
     function swipe(event, direction) {
         $('.serious').fadeOut();
         $('.fun').fadeOut();
         $('#splash').fadeOut();
-        if (direction == 'left') {
+        if (direction == 'left' && dragger_state == true) {
             slide_to_fun();
         <%= yield :masonry %>
         }
         else {
-            slide_to_serious();
+            if (direction == 'right' && dragger_state == true) {
+                slide_to_serious();
+            }
+            else {
+                slide_to_center();
+            }
         }
         stretcher();
         toggle_dragger();
@@ -866,65 +942,7 @@
     });
 
 </script>
-<%= yield(:head) %>
-</head>
-<body>
-<%= js extend_gritter :position => :bottom_right %>
-<%= js add_gritter(flash[:notice], :image => :success, :title => "Notice", :sticky => false, :time => 2000) %>
-<%= js add_gritter(flash[:alert], :image => :warning, :title => "Alert!", :sticky => false, :time => 2000) %>
-<div>
-  <%= image_tag "col.jpg", :id => "lowerimage" %>
-  <div id="viewport">
-    <%= image_tag "bnw.jpg", :id => "upperimage" %>
-  </div>
-  <div id="appframe" style="background: black;">
-    <div id="knob">
-      <%= image_tag "dragger.png", :id => "logo" %>
-    </div>
-    <div id="content">
-      <div id="serious_section">
-        <%= yield :serious %>
-      </div>
-      <div id="fun_section">
-        <%= yield :fun %>
-      </div>
-      <div id="splash">
-        <%= yield :splash %>
-      </div>
-    </div>
-  </div>
-</div>
-<% if @product %>
-    <div class="modal hide fade" id="contact_us">
-      <% @contact=Contact.new %>
-      <%= form_for(@contact) do |f| %>
-          <div class="modal-header">
-            <h2 style="width:100%">Contact Us
-              <a href="#" data-dismiss="modal" style="text-decoration: none;float:right;margin-right: 20px;">x</a>
-            </h2>
-          </div>
-          <div class="modal-body">
-            Do let us know how we can contact you...
-            <br/>
-            <br/>
-            <%= image_tag "contact_us.png", :style => "float:left;width:150px;margin-right:20px;" %>
-            <%= f.label :email %>
-            <br>
-            <%= f.text_field :email, :style => "width:250px;" %>
-            <br/>
-            <br/>
-            <%= f.label :phone %>
-            <br>
-            <%= f.text_field :phone, :style => "width:250px;" %>
-            <%= f.hidden_field :product_id, :value => @product.id %>
-          </div>
-          <div class="modal-footer">
-            <%= f.submit "Send", :class => "btn btn-large btn-info" %>
-            <a href="#" class="btn btn-warning btn-large" data-dismiss="modal" style="text-decoration: none;">Cancel</a>
-          </div>
-      <% end %>
-    </div>
-<% end %>
+
 </body>
 </html>
 

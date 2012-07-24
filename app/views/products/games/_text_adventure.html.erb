@@ -3,7 +3,7 @@
 
 <h1 class="story_header"><%= @story.name.downcase %></h1>
 <div id="ta_image">
-  <%= image_tag @story.avatar.url(:medium) %>
+  <%= image_tag @story.avatar.url(:medium), :id=>"ta_image_background" %>
   <div id="ta_writeup" style="display: none;">
     <div id="ta_writeup_scroller">
       <div class="customScrollBox">
@@ -25,7 +25,7 @@
   <%= image_tag "parchment.png", :class => "background" %>
   <div id="scroller_launcher">
     <div id="ta_launcher_link" class="launcher">
-      <%= link_to image_tag("start_the_quest.png"), "#", :class => "option", "data-step" => "#{@story.snippets[0].path_options.first.id}", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image img:first').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
+      <%= link_to image_tag("start_the_quest.png"), "#", :class => "option", "data-step" => "#{@story.snippets[0].path_options.first.id}", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image_background').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
     </div>
     <br>
 

@@ -11,7 +11,9 @@ gem 'thesilverspoon'
 gem 'thin'
 gem 'paperclip'
 gem 'ancestry'
-
+gem 'cancan'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Gems used only for assets and not required
 # in production environments by default.

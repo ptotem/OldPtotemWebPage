@@ -1,6 +1,16 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+
+
+
+@media only screen and (orientation:portrait){
+   /* portrait styles here */
+   #wrap {
+      width:768px;
+   }
+}
 
 img{
   border:none;
@@ -92,7 +102,7 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#a6000000', endColorstr = '#00000000', GradientType = 1); /* IE6-9 */
 
   color: gray;
-  font-family: 'Comic', cursive;
+  font-family: 'Convergence', 'Serif';
   font-size: 20px;
 
 }
@@ -100,15 +110,16 @@ body {
 #fun_menu li a {
   color: #ffffff;
   font-size: 20px;
-  font-family: 'Metamorphous', cursive;
   text-decoration: none;
+  font-family: 'Convergence', 'Serif';
+
 }
 
 #fun_menu li a:hover {
   color: #ffffff;
   font-size: 20px;
   font-weight: bold;
-  font-family: 'Metamorphous', cursive;
+  font-family: 'Convergence', 'Serif';
   text-decoration: none;
 }
 
@@ -125,7 +136,6 @@ body {
   left: 690px;
   top: -120px;
   color: black;
-  font-size: 16px;
   width: 300px;
 }
 

@@ -1,0 +1,19 @@
+# pack-refs with: peeled 
+f919f872b393ada7fdbfb7cdf695acf2757e2772 refs/tags/v0.0.5
+^e08adbeafe3e787c5b5aec6bca205490e8114898
+a3e23c0dcf8f9488a79b0f753a7513eafcf8f69d refs/tags/v0.0.4
+^8068d0ce8fcba36d05ae1da24240b1e12d79ef4f
+0591c7b765779ea8797f0f0b9222299e600393ca refs/tags/v0.0.3
+^7e88e7d37de56e3f42c73077c9067ca9ca10aef0
+daa8d377587115484ab4f06272a9242436ab615c refs/tags/v0.0.2
+^3c7f7a4b2d604cb310d1fbde2f83bdc82e7e14cd
+69edc0b0ac7dfa2780a39c113b54718b6defe081 refs/tags/v0.0.1
+^e12f8b4fd0d2198da2684ad787c488e26564eaa0
+4af3fc415456ac00aeaa1c56bf1869234524b50f refs/heads/rails-3.0
+7efa7ad2b37b9c0d154d33ef351e0073c97a8a06 refs/heads/pjax-form
+41f1af69607b721bc97e6b22b0df52970fae10e5 refs/heads/nested_forms
+ec0675444fd6ffb09ff22f3c183564716f209018 refs/heads/master
+14cdd3be4ada38f8e6974935f806c8de170abf11 refs/heads/dsl-refactoring
+acfa1e5d2bf3c80a511d3d2ea6dcd60169d5c564 refs/heads/associated-collection-refact
+1cb0628eea5be6120c4bfcbe609b3cea5f246290 refs/heads/activo
+19453d77913e5cc92dd836294bcb6e7ceb4d2a7f refs/heads/actions

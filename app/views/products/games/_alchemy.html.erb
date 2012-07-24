@@ -4,7 +4,7 @@
 
 <h1 class="story_header"><%= @story.name.downcase %></h1>
 <div id="ta_image">
-  <%= image_tag @story.avatar.url(:medium) %>
+  <%= image_tag @story.avatar.url(:medium), :id=>"ta_image_background" %>
   <div id="ta_writeup" style="display: none;">
     <div><%= raw @story.snippets[1].description %></div>
   </div>
@@ -14,7 +14,7 @@
   <%= image_tag "parchment.png", :class => "background" %>
   <div id="scroller_launcher">
     <div id="ta_launcher_link" class="launcher">
-      <%= link_to image_tag("start_the_quest.png"), "#", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image img').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
+      <%= link_to image_tag("start_the_quest.png"), "#", :onclick => "$('#scroller_launcher').hide();$('#scroller_test').show();$('#ta_image_background').attr('src','/assets/table_background.jpg');$('#ta_writeup').show();" %>
     </div>
     <br>
     <div id="ta_launcher_content" class="launcher">

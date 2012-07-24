@@ -135,6 +135,14 @@
   width: 300px;
   height: 375px;
   margin-top: -10px;
+  margin-left: 0px;
+}
+
+#ta_image_background {
+  position:absolute;
+  left:25px;
+  width: 320px;
+  height: 375px;
 }
 
 #ta_writeup {
@@ -163,7 +171,7 @@
 #ta_container {
   position: relative;
   margin-top: -375px;
-  margin-left: 320px;
+  margin-left: 350px;
   text-align: center;
 }
 
@@ -256,7 +264,7 @@
   width: 2px;
   height: 200px;
   float: left;
-  margin: 50px 0 0 21px;
+  margin: 50px 0 0 37px;
   background: #000;
   cursor: pointer;
   -moz-border-radius: 2px;
@@ -306,7 +314,7 @@
   display: inline-block;
   width: 32px;
   height: 32px;
-  margin-right: 12px;
+  margin-right: -4px;
   text-decoration: none;
   right: 0;
   filter: alpha(opacity = 60);
@@ -523,8 +531,8 @@
 
 #side_pic {
   position: absolute;
-  right:0px;
-  bottom:0px;
+  right: 0px;
+  bottom: 0px;
   width: 100px;
   height: 19px;
   padding: 10px;
@@ -584,8 +592,8 @@
 
 #screencaster {
   position: absolute;
-  top:230px;
-  left:550px;
+  top: 230px;
+  left: 550px;
   text-align: center;
   font-size: 24px;
   color: black;
