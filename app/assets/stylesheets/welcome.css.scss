@@ -3,17 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 //
 
-
-
-@media only screen and (orientation:portrait){
-   /* portrait styles here */
-   #wrap {
-      width:768px;
-   }
+@media only screen and (orientation:portrait) {
+/* portrait styles here */
+  #wrap {
+    width: 768px;
+  }
 }
 
-img{
-  border:none;
+img {
+  border: none;
 }
 
 html {
@@ -331,6 +329,7 @@ body {
   text-align: left;
   font-weight: bold;
   margin-left: 170px;
+  margin-top: -130px;
 }
 
 .arrow {
@@ -382,63 +381,99 @@ body {
 }
 
 .description1 {
-  top: 480px;
+  top: 230px;
   left: 90px;
   width: 440px;
 }
 
 .description2 {
-  top: 1188px;
-  left: -650px;
+  left: -49px;
+  top: 700px;
   width: 590px;
 }
 
 .description3 {
-  top: 1545px;
-  left: 291px;
-  width: 680px;
+  left: -707px;
+  top: 1046px;
+  width: 674px;
 }
 
 .description4 {
-  top: 1539px;
-  left: 1417px;
-  width: 440px;
+  left: -417px;
+  top: 1391px;
+  width: 426px;
 }
 
 .description5 {
-  top: 713px;
-  left: 2265px;
-  width: 440px;
-  transform: rotate(90deg) translateY(2.5em);
+  left: 150px;
+  top: 1651px;
+  transform: rotate(0deg) translateY(0em);
+  width: 445px;
 }
 
 .description6 {
-  top: -250px;
-  left: 2265px;
-  width: 440px;
-  transform: rotate(90deg) translateY(2.5em);
+  left: 760px;
+  top: 1487px;
+  transform: rotate(0deg) translateY(0em);
+  width: 435px;
 }
 
 .description7 {
-  top: -985px;
-  left: 1784px;
-  width: 480px;
-  transform: rotate(90deg) translateY(2.5em);
+  left: 1392px;
+  top: 1659px;
+  transform: rotate(0deg) translateY(0em);
+  width: 445px;
 }
 
 .description8 {
-  top: -987px;
-  left: 1149px;
-  width: 480px;
-  transform: rotate(90deg) translateY(2.5em);
+  left: 2223px;
+  top: 720px;
+  transform: rotate(90deg) translateY(0em);
+  width: 452px;
 }
 
 .description9 {
-  top: -745px;
-  left: 400px;
-  width: 465px;
-  transform: rotate(45deg) translateY(2.5em);
+  left: 2043px;
+  top: 50px;
+  transform: rotate(90deg) translateY(0em);
+  width: 450px;
 }
+
+.description10 {
+  left: 2220px;
+  top: -539px;
+  transform: rotate(90deg) translateY(0em);
+  width: 435px;
+
+}
+
+.description11 {
+  left: 1880px;
+  top: -986px;
+  transform: rotate(90deg) translateY(2.5em);
+  width: 456px;
+}
+
+.description12 {
+  left: 1190px;
+  top: -985px;
+  transform: rotate(90deg) translateY(2.5em);
+  width: 456px;
+}
+
+.description13 {
+  left: 495px;
+  top: -815px;
+  transform: rotate(45deg) translateY(2.5em);
+  width: 476px;
+}
+
+//.description14 {
+//  left: 1880px;
+//  top: -986px;
+//  transform: rotate(90deg) translateY(2.5em);
+//  width: 456px;
+//}
 
 @keyframes point-down {
 	from {
